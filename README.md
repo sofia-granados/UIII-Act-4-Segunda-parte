@@ -5,9 +5,9 @@ app_mascotas/views.py (AGREGAR estas funciones):
     
     from .models import Animal, Cliente, Empleado
 
-    # ==========================================
-    # VISTAS PARA CLIENTES  
-    # ==========================================
+   # ==========================================
+  # VISTAS PARA CLIENTES  
+  # ==========================================
 
     def inicio_clientes(request):
     return render(request, 'clientes/inicio_clientes.html')
