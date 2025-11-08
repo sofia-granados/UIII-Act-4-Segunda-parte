@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+<div class="col-md-8">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">➕ Agregar Nueva Mascota</h4>
+        </div>
+        <div class="card-body">
+            <!-- AGREGAR: enctype="multipart/form-data" para subir archivos -->
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Nombre</label>
+                        <input type="text" class="form-control" name="nombre" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Edad</label>
+                        <input type="text" class="form-control" name="edad">
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Peso (kg)</label>
+                        <input type="number" step="0.01" class="form-control" name="peso" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Especie</label>
+                        <input type="text" class="form-control" name="especie" required>
+                    </div>
+                </div>
+                
+                <!-- NUEVO: Campo para imagen -->
+                <div class="mb-3">
+                    <label class="form-label">Imagen de la Mascota</label>
+                    <input type="file" class="form-control" name="imagen" accept="image/*">
+                    <div class="form-text">Formatos aceptados: JPG, PNG, GIF. Tamaño máximo: 5MB</div>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Cuidados Especiales</label>
+                    <textarea class="form-control" name="cuidados" rows="2"></textarea>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Enfermedades</label>
+                    <textarea class="form-control" name="enfermedades" rows="2"></textarea>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Alimentación</label>
+                    <textarea class="form-control" name="alimentacion" rows="2"></textarea>
+                </div>
+                
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button type="submit" class="btn btn-primary me-md-2">Guardar Mascota</button>
+                    <a href="{% url 'ver_mascotas' %}" class="btn btn-secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
